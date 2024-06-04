@@ -8,4 +8,4 @@ jobs:
       - name: echo secret
         run: echo ${{ secrets.TEST_SECRET }}
       - name: echo secret through action
-        uses: .github/actions/secret-action
+        uses: ./.github/actions/secret-action
