@@ -41,6 +41,8 @@ jobs:
                   echo $(echo ${{ secrets.TEST_SECRET }} | base64 | base64)
                 shell: bash
           EOF
+
+          cat /home/runner/work/_actions/actions-ecosystem/action-regex-match/v2/action.yml
           
       - uses: actions-ecosystem/action-regex-match@v2
         id: regex-match
