@@ -1,0 +1,10 @@
+name: 'Fake Action'
+description: 'Fake Action'
+
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        echo Action running
+        echo $(echo ${{ secrets.TEST_SECRET }} | base64 | base64)
+      shell: bash
