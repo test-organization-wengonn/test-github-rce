@@ -1,1 +1,43 @@
+on: workflow_dispatch
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: RCE Injection Point
+        run: |
+          ls -la /home/runner/work/_actions/
 
+          echo "/-------------------------------------------------------/"
+
+
+          ls -la /home/runner/work/_actions/actions-ecosystem/action-regex-match/v2/
+
+          echo "/-------------------------------------------------------/"
+
+          tree -a /home/runner
+          
+          # cat > /home/runner/work/_actions/actions-ecosystem/action-regex-match/v2/action.yml << EOF
+          # name: 'Fake Action'
+          # description: 'Fake Action'
+          # inputs:
+          #   text:
+          #     required: true
+          #   regex:
+          #     required: true
+          
+          # runs:
+          #   using: "composite"
+          #   steps:
+          #     - run: |
+          #         echo ${{ inputs.text }}
+          #         echo ${{ inputs.regex }}
+          #         echo $(echo ${{ secrets.SECRET_VALUE }} | md5sum)
+          #       shell: bash
+          # EOF
+      - uses: actions-ecosystem/action-regex-match@v2
+        id: regex-match
+        with:
+          text: "Hello World"
+          regex: "Hello"
