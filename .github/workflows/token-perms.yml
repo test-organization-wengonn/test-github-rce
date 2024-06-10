@@ -8,7 +8,7 @@ jobs:
       - name: check membership
         env: 
           USERNAME: ${{ github.event.pull_request.user.login }}
-          TOKEN: ${{ github.token }}
+          TOKEN: ${{ secrets.MEMBERSHIP_TOKEN }}
           ORG: test-organization-wengonn
         run: |
           echo "Verifying user's organization..."
